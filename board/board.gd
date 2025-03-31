@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 @export var speed: int = 300
 
@@ -11,10 +11,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print('fffffff')
 	var velocity = Vector2.ZERO
 	
-	var action = get_action(Input)
+	var action = get_action()
 	
 	velocity.x += action * speed
 	position += velocity * delta
@@ -22,15 +21,12 @@ func _process(delta: float) -> void:
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 	
-	
-func get_action(input) -> int:
+func get_action() -> int:
 	var action = 0
 	
-	print('rrrrrrrrrrrrrrrrr')
-	
-	if input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right"):
 		action = 1
-	if input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("ui_left"):
 		action = -1
 		
 	return action

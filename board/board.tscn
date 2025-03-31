@@ -6,7 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46shn"]
 size = Vector2(66, 16)
 
-[node name="Board" type="Area2D"]
+[node name="Board" type="RigidBody2D"]
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+freeze = true
 script = ExtResource("1_78lfi")
 metadata/_edit_group_ = true
 
