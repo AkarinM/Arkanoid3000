@@ -1,12 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1nawjtuyvweb"]
+[gd_scene load_steps=5 format=3 uid="uid://d1nawjtuyvweb"]
+
+[ext_resource type="Script" path="res://ball/ball.gd" id="1_27i23"]
+[ext_resource type="Texture2D" uid="uid://omej15l5t71b" path="res://sprites/6214519_ball_basketball_dribbble_logo_icon.png" id="1_aviyc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0hg5p"]
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_td3om"]
+radius = 25.2982
 
 [node name="Ball" type="RigidBody2D"]
+position = Vector2(50, 39)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_0hg5p")
+gravity_scale = 0.0
+linear_damp_mode = 1
+script = ExtResource("1_27i23")
+speed = 300
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.99676e-06, 1.90735e-06)
+scale = Vector2(0.107886, 0.12183)
+texture = ExtResource("1_aviyc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_td3om")
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
