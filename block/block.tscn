@@ -1,20 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlwn34egfsfr6"]
+[gd_scene load_steps=4 format=3 uid="uid://dlwn34egfsfr6"]
 
+[ext_resource type="Script" path="res://block/block.gd" id="1_d6152"]
 [ext_resource type="Texture2D" uid="uid://coer35u7bncda" path="res://sprites/block1.png" id="1_of0kl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ex32q"]
-size = Vector2(158, 88)
+size = Vector2(158, 89)
 
 [node name="Block" type="RigidBody2D" groups=["blocks"]]
 collision_mask = 0
-gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
 freeze = true
+script = ExtResource("1_d6152")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4.96, 5.92)
 texture = ExtResource("1_of0kl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ex32q")

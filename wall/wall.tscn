@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8fqs5vihydmy"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_unnhk"]
+normal = Vector2(-0.00302369, -0.999995)
+
+[node name="Wall" type="RigidBody2D"]
+position = Vector2(599, 314)
+can_sleep = false
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(10, 0.394)
+shape = SubResource("WorldBoundaryShape2D_unnhk")

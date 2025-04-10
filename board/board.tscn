@@ -7,6 +7,7 @@
 size = Vector2(66, 16)
 
 [node name="Board" type="RigidBody2D"]
+position = Vector2(2, 0)
 gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
@@ -15,7 +16,9 @@ script = ExtResource("1_78lfi")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1)
 texture = ExtResource("2_yig6o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.16977, 0.852115)
 shape = SubResource("RectangleShape2D_46shn")
