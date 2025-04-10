@@ -4,13 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://coer35u7bncda" path="res://sprites/block1.png" id="1_of0kl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ex32q"]
-size = Vector2(158, 89)
+size = Vector2(162, 92)
 
 [node name="Block" type="RigidBody2D" groups=["blocks"]]
-collision_mask = 0
 can_sleep = false
 lock_rotation = true
 freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 10
 script = ExtResource("1_d6152")
 metadata/_edit_group_ = true
 
@@ -19,5 +21,8 @@ scale = Vector2(4.96, 5.92)
 texture = ExtResource("1_of0kl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+light_mask = 0
+visibility_layer = 0
 shape = SubResource("RectangleShape2D_ex32q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
