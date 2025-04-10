@@ -15,8 +15,7 @@ position = Vector2(100, 51)
 mass = 0.001
 physics_material_override = SubResource("PhysicsMaterial_0hg5p")
 gravity_scale = 0.0
-contact_monitor = true
-max_contacts_reported = 1
+max_contacts_reported = 10
 linear_damp_mode = 1
 script = ExtResource("1_27i23")
 speed = 300
@@ -31,3 +30,5 @@ texture = ExtResource("1_aviyc")
 rotation = 1.01404
 scale = Vector2(1.56, 1.56)
 shape = SubResource("CircleShape2D_td3om")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

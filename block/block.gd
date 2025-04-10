@@ -13,4 +13,5 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.name == 'Ball':
 		queue_free()
-	pass # Replace with function body.
+		await tree_exited
+		Signals_bus.block_destroyed.emit()
