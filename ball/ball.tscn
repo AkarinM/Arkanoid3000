@@ -30,5 +30,3 @@ texture = ExtResource("1_aviyc")
 rotation = 1.01404
 scale = Vector2(1.56, 1.56)
 shape = SubResource("CircleShape2D_td3om")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
