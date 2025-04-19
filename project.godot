@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="arkanoid3000"
-run/main_scene="res://level/level.tscn"
+run/main_scene="res://start/start.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Signals_bus="*res://common/signals.gd"
+Common="*res://common/common.gd"
 
 [editor]
 

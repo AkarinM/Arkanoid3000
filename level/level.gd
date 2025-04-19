@@ -13,12 +13,9 @@ var board_pos_y = 0
 func _ready() -> void:
 	Signals_bus.block_destroyed.connect(_on_block_destroyed)
 	Signals_bus.ball_down.connect(_on_ball_dawn)
-	
-	#for child in get_children():
-		#if child.has_signal("ready"):
-			#await child.ready
-			
+
 	num_blocks = get_tree().get_nodes_in_group('blocks').size()
+	board_pos_y = $Board.position.y
 	
 
 
@@ -44,6 +41,7 @@ func _on_ball_dawn(pos_y):
 func end_game():
 	$Ball.hide()
 	$Board.hide()
+	
 	
 	var label = preload('res://label/label.tscn').instantiate()
 	var text = win_text if win else loose_text
