@@ -4,6 +4,7 @@ var win = false
 var loose = false
 
 var num_blocks = 0
+var board_pos_y = 0
 
 @export var win_text = 'You win!'
 @export var loose_text = 'You loose!'
@@ -11,12 +12,14 @@ var num_blocks = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals_bus.block_destroyed.connect(_on_block_destroyed)
+	Signals_bus.ball_down.connect(_on_ball_dawn)
 	
 	#for child in get_children():
 		#if child.has_signal("ready"):
 			#await child.ready
 			
 	num_blocks = get_tree().get_nodes_in_group('blocks').size()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,6 +35,10 @@ func _on_block_destroyed():
 	
 	if num_blocks <= 0:
 		win = true
+		
+func _on_ball_dawn(pos_y):
+	if pos_y > board_pos_y:
+		loose = true
 
 
 func end_game():

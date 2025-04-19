@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8fqs5vihydmy"]
+[gd_scene load_steps=3 format=3 uid="uid://c8fqs5vihydmy"]
+
+[ext_resource type="Script" path="res://wall/wall.gd" id="1_c6y26"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_unnhk"]
 normal = Vector2(-0.00302369, -0.999995)
@@ -8,7 +10,13 @@ position = Vector2(599, 314)
 can_sleep = false
 lock_rotation = true
 freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_c6y26")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(10, 0.394)
 shape = SubResource("WorldBoundaryShape2D_unnhk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
