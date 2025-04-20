@@ -1,4 +1,5 @@
 extends Node
 
 func change_scene(path):
-	get_tree().change_scene_to_file(path)
+	if path != '':
+		get_tree().change_scene_to_file(path)

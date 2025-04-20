@@ -39,13 +39,5 @@ func _on_ball_dawn(pos_y):
 
 
 func end_game():
-	$Ball.hide()
-	$Board.hide()
+	Common.change_scene('res://loose/loose.tscn')
 	
-	
-	var label = preload('res://label/label.tscn').instantiate()
-	var text = win_text if win else loose_text
-	
-	label.text = text
-	
-	add_child(label)
