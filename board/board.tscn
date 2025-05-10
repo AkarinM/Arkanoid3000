@@ -13,6 +13,7 @@ can_sleep = false
 lock_rotation = true
 freeze = true
 script = ExtResource("1_78lfi")
+speed = 500
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

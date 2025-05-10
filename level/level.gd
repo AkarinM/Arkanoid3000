@@ -21,28 +21,36 @@ func _ready() -> void:
 	wait_time = $Timer.wait_time
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if win or loose:
+	if win:
+		win_game()
+	elif loose:
 		end_game()
 
 
 func _on_block_destroyed():
 	num_blocks -= 1
 	
-	print('num_blocks', num_blocks)
-	
 	if num_blocks <= 0:
 		win = true
-		
+
+
 func _on_ball_dawn(pos_y):
 	if pos_y > board_pos_y:
 		loose = true
 
 
-func end_game():
-	Common.change_scene('res://loose/loose.tscn')
+func win_game():
+	var scene_path = 'res://win/win.tscn'
+	Common.time = int($cur_time.text)
 	
+	Common.change_scene(scene_path)
+
+
+func end_game():
+	var scene_path = 'res://loose/loose.tscn'
+	
+	Common.change_scene(scene_path)
 
 
 func _on_timer_timeout() -> void:

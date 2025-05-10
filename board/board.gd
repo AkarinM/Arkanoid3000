@@ -12,8 +12,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO
+	var action
 	
-	var action = get_action()
+	if !OS.has_feature('editor'):
+		pass
+	else:
+		action = get_action()
 	
 	velocity.x += action * speed
 	position += velocity * delta
