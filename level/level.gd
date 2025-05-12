@@ -14,6 +14,7 @@ var wait_time = 0
 func _ready() -> void:
 	Signals_bus.block_destroyed.connect(_on_block_destroyed)
 	Signals_bus.ball_down.connect(_on_ball_dawn)
+	Signals_bus.button_press.connect(_on_button_press)
 
 	num_blocks = get_tree().get_nodes_in_group('blocks').size()
 	board_pos_y = $Board.position.y
@@ -26,6 +27,14 @@ func _process(delta: float) -> void:
 		win_game()
 	elif loose:
 		end_game()
+		
+	if OS.has_feature('editor'):
+		if Input.is_action_just_released('ui_right') or Input.is_action_just_released('ui_left'):
+			_on_button_press(0)
+		elif Input.is_action_pressed('ui_right'):
+			_on_button_press(1)
+		elif Input.is_action_pressed('ui_left'):
+			_on_button_press(-1)
 
 
 func _on_block_destroyed():
@@ -54,6 +63,11 @@ func end_game():
 
 
 func _on_timer_timeout() -> void:
-	var val = int($cur_time.text)
+	var val = int($Cur_time.text)
 	
-	$cur_time.text = str(val + wait_time)
+	$Cur_time.text = str(val + wait_time)
+	
+
+func _on_button_press(action):
+	$Board.set_action(action)
+	

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ir48yg5mx8ql"]
+[gd_scene load_steps=7 format=3 uid="uid://ir48yg5mx8ql"]
 
 [ext_resource type="PackedScene" uid="uid://y8xxpenklltt" path="res://board/board.tscn" id="1_ds2vg"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_jlua2"]
 [ext_resource type="PackedScene" uid="uid://dlwn34egfsfr6" path="res://block/block.tscn" id="2_8j4dq"]
 [ext_resource type="PackedScene" uid="uid://d1nawjtuyvweb" path="res://ball/ball.tscn" id="3_qte7e"]
 [ext_resource type="PackedScene" uid="uid://c8fqs5vihydmy" path="res://wall/wall.tscn" id="4_exmat"]
+[ext_resource type="PackedScene" uid="uid://rj2swry4eo20" path="res://control/control.tscn" id="6_c4sfo"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_jlua2")
@@ -76,7 +77,7 @@ rotation = 0.0872665
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="cur_time" type="Label" parent="."]
+[node name="Cur_time" type="Label" parent="."]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -93,5 +94,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Control" parent="." instance=ExtResource("6_c4sfo")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
