@@ -51,7 +51,7 @@ func _on_ball_dawn(pos_y):
 
 func win_game():
 	var scene_path = 'res://win/win.tscn'
-	Common.time = int($cur_time.text)
+	Common.time = int($Сur_time.text)
 	
 	Common.change_scene(scene_path)
 
