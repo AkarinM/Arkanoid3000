@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://coer35u7bncda" path="res://sprites/block1.png" id="1_of0kl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ex32q"]
-size = Vector2(162, 92)
+size = Vector2(106, 53)
 
 [node name="Block" type="RigidBody2D" groups=["blocks"]]
 collision_mask = 2
@@ -18,12 +18,14 @@ script = ExtResource("1_d6152")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4.96, 5.92)
+position = Vector2(-0.180004, 0)
+scale = Vector2(3.26875, 3.48)
 texture = ExtResource("1_of0kl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0
 visibility_layer = 0
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ex32q")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
