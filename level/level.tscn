@@ -2,58 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://y8xxpenklltt" path="res://board/board.tscn" id="1_ds2vg"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_jlua2"]
-[ext_resource type="PackedScene" uid="uid://dlwn34egfsfr6" path="res://block/block.tscn" id="2_8j4dq"]
 [ext_resource type="PackedScene" uid="uid://d1nawjtuyvweb" path="res://ball/ball.tscn" id="3_qte7e"]
 [ext_resource type="PackedScene" uid="uid://c8fqs5vihydmy" path="res://wall/wall.tscn" id="4_exmat"]
 [ext_resource type="PackedScene" uid="uid://rj2swry4eo20" path="res://control/control.tscn" id="6_c4sfo"]
+[ext_resource type="PackedScene" uid="uid://b58kl4jf7107x" path="res://block_manager/block_manager.tscn" id="6_iq278"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_jlua2")
 
 [node name="Board" parent="." instance=ExtResource("1_ds2vg")]
 position = Vector2(560, 606)
-
-[node name="Block" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(84, 48)
-
-[node name="Block2" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(727, 54)
-
-[node name="Block6" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(887, 51)
-
-[node name="Block7" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(1052, 51)
-
-[node name="Block8" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(250, 135)
-
-[node name="Block9" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(462, 230)
-
-[node name="Block14" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(333, 318)
-
-[node name="Block10" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(575, 138)
-
-[node name="Block11" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(892, 146)
-
-[node name="Block12" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(736, 221)
-
-[node name="Block13" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(194, 225)
-
-[node name="Block3" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(564, 52)
-
-[node name="Block4" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(410, 51)
-
-[node name="Block5" parent="." instance=ExtResource("2_8j4dq")]
-position = Vector2(247, 47)
 
 [node name="Ball" parent="." instance=ExtResource("3_qte7e")]
 position = Vector2(558, 393)
@@ -96,5 +54,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Control" parent="." instance=ExtResource("6_c4sfo")]
+
+[node name="BlockManager" parent="." instance=ExtResource("6_iq278")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

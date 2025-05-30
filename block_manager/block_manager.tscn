@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b58kl4jf7107x"]
+
+[ext_resource type="Script" path="res://block_manager/block_manager.gd" id="1_rwy2q"]
+[ext_resource type="PackedScene" uid="uid://dlwn34egfsfr6" path="res://block/block.tscn" id="2_k7xv5"]
+
+[node name="BlockManager" type="Node"]
+script = ExtResource("1_rwy2q")
+block_obj = ExtResource("2_k7xv5")
