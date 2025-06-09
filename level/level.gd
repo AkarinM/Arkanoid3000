@@ -6,6 +6,7 @@ var loose = false
 var num_blocks = 0
 var board_pos_y = 0
 var wait_time = 0
+var cur_time_obj = null
 
 @export var win_text = 'You win!'
 @export var loose_text = 'You loose!'
@@ -20,6 +21,8 @@ func _ready() -> void:
 	board_pos_y = $Board.position.y
 	
 	wait_time = $Timer.wait_time
+	
+	cur_time_obj = get_node('UI/Cur_time')
 
 
 func _process(delta: float) -> void:
@@ -51,7 +54,7 @@ func _on_ball_dawn(pos_y):
 
 func win_game():
 	var scene_path = 'res://win/win.tscn'
-	Common.time = int($Сur_time.text)
+	Common.time = int(cur_time_obj.text)
 	
 	Common.change_scene(scene_path)
 
@@ -63,9 +66,9 @@ func end_game():
 
 
 func _on_timer_timeout() -> void:
-	var val = int($Cur_time.text)
+	var val = int(cur_time_obj.text)
 	
-	$Cur_time.text = str(val + wait_time)
+	cur_time_obj.text = str(val + wait_time)
 	
 
 func _on_button_press(action):

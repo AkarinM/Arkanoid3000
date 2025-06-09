@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 Signals_bus="*res://common/signals.gd"
 Common="*res://common/common.gd"
 
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

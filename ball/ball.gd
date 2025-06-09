@@ -4,7 +4,10 @@ extends RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	linear_velocity = Vector2.DOWN * speed
+	var rng = RandomNumberGenerator.new()
+	var x = rng.randf_range(-2, 2)
+	
+	linear_velocity = Vector2(x, 1).normalized() * speed
 	
 
 
