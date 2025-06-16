@@ -1,4 +1,6 @@
-extends Node2D
+#extends Node2D
+
+extends Control
 
 var win = false
 var loose = false
@@ -22,7 +24,7 @@ func _ready() -> void:
 	
 	wait_time = $Timer.wait_time
 	
-	cur_time_obj = get_node('UI/Cur_time')
+	cur_time_obj = $Cur_time
 
 
 func _process(delta: float) -> void:
@@ -48,8 +50,8 @@ func _on_block_destroyed():
 
 
 func _on_ball_dawn(pos_y):
-	if pos_y > board_pos_y:
-		loose = true
+	#if pos_y > board_pos_y:
+	loose = true
 
 
 func win_game():

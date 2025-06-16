@@ -5,10 +5,9 @@
 
 [node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -19,9 +18,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -381.0
+offset_left = 200.0
 offset_top = 252.0
-offset_right = -249.0
+offset_right = 332.0
 offset_bottom = 380.0
 grow_vertical = 0
 rotation = -3.14639
@@ -37,9 +36,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 376.0
+offset_left = -208.0
 offset_top = 124.0
-offset_right = 514.0
+offset_right = -70.0
 offset_bottom = 254.0
 grow_horizontal = 0
 grow_vertical = 0

@@ -3,14 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://y8xxpenklltt" path="res://board/board.tscn" id="1_ds2vg"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_jlua2"]
 [ext_resource type="PackedScene" uid="uid://d1nawjtuyvweb" path="res://ball/ball.tscn" id="3_qte7e"]
-[ext_resource type="PackedScene" uid="uid://c8fqs5vihydmy" path="res://wall/wall.tscn" id="4_exmat"]
-[ext_resource type="PackedScene" uid="uid://rj2swry4eo20" path="res://control/control.tscn" id="6_c4sfo"]
 [ext_resource type="PackedScene" uid="uid://b58kl4jf7107x" path="res://block_manager/block_manager.tscn" id="6_iq278"]
+[ext_resource type="PackedScene" uid="uid://rj2swry4eo20" path="res://control/control.tscn" id="7_0eocp"]
+[ext_resource type="PackedScene" uid="uid://c8fqs5vihydmy" path="res://wall/wall.tscn" id="7_4xrp5"]
+[ext_resource type="Script" path="res://wall/wall.gd" id="8_vn3c2"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_tyob8"]
-font_size = 44
-
-[node name="Level" type="Node2D"]
+[node name="Level" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_jlua2")
 
 [node name="Board" parent="." instance=ExtResource("1_ds2vg")]
@@ -19,62 +25,58 @@ position = Vector2(560, 606)
 [node name="Ball" parent="." instance=ExtResource("3_qte7e")]
 position = Vector2(558, 393)
 
-[node name="WallLeft" parent="." instance=ExtResource("4_exmat")]
-position = Vector2(-1, 315)
-rotation = 1.5708
-
-[node name="WallRight" parent="." instance=ExtResource("4_exmat")]
-position = Vector2(1153, 338)
-rotation = -1.5708
-
-[node name="WallTop" parent="." instance=ExtResource("4_exmat")]
-position = Vector2(577, -3)
-rotation = 3.14159
-
-[node name="WallBot" parent="." instance=ExtResource("4_exmat")]
-position = Vector2(540, 692)
-rotation = 0.0872665
-
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="BlockManager" parent="." instance=ExtResource("6_iq278")]
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 561.0
-offset_top = 264.0
-offset_right = 601.0
-offset_bottom = 304.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Control" parent="UI" instance=ExtResource("6_c4sfo")]
+[node name="Cur_time" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_top = 0.0
-anchor_bottom = 0.0
-grow_vertical = 1
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Cur_time" type="Label" parent="UI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 480.0
-offset_top = 202.0
-offset_right = 571.0
-offset_bottom = 263.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 8
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 69.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 50
 text = "0"
-label_settings = SubResource("LabelSettings_tyob8")
-horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="WallRight" parent="Control" instance=ExtResource("7_4xrp5")]
+position = Vector2(0, -4)
+rotation = 1.5708
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="WallBot" parent="Control2" instance=ExtResource("7_4xrp5")]
+position = Vector2(0, 24)
+script = ExtResource("8_vn3c2")
+
+[node name="WallLeft" parent="." instance=ExtResource("7_4xrp5")]
+position = Vector2(-8, 248)
+rotation = 1.5708
+
+[node name="WallTop" parent="." instance=ExtResource("7_4xrp5")]
+position = Vector2(560, 8)
+
+[node name="Control3" parent="." instance=ExtResource("7_0eocp")]
+layout_mode = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
