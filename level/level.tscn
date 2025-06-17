@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://level/level.gd" id="1_jlua2"]
 [ext_resource type="PackedScene" uid="uid://d1nawjtuyvweb" path="res://ball/ball.tscn" id="3_qte7e"]
 [ext_resource type="PackedScene" uid="uid://b58kl4jf7107x" path="res://block_manager/block_manager.tscn" id="6_iq278"]
-[ext_resource type="PackedScene" uid="uid://rj2swry4eo20" path="res://control/control.tscn" id="7_0eocp"]
 [ext_resource type="PackedScene" uid="uid://c8fqs5vihydmy" path="res://wall/wall.tscn" id="7_4xrp5"]
+[ext_resource type="Texture2D" uid="uid://b5w1d8ta1k022" path="res://sprites/button_icon.png" id="7_pbt4b"]
 [ext_resource type="Script" path="res://wall/wall.gd" id="8_vn3c2"]
 
 [node name="Level" type="Control"]
@@ -51,7 +51,7 @@ anchor_bottom = 0.5
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="WallRight" parent="Control" instance=ExtResource("7_4xrp5")]
+[node name="WallRight" parent="Control" groups=["walls"] instance=ExtResource("7_4xrp5")]
 position = Vector2(0, -4)
 rotation = 1.5708
 
@@ -65,18 +65,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="WallBot" parent="Control2" instance=ExtResource("7_4xrp5")]
+[node name="WallBot" parent="Control2" groups=["walls"] instance=ExtResource("7_4xrp5")]
 position = Vector2(0, 24)
 script = ExtResource("8_vn3c2")
 
-[node name="WallLeft" parent="." instance=ExtResource("7_4xrp5")]
+[node name="WallLeft" parent="." groups=["walls"] instance=ExtResource("7_4xrp5")]
 position = Vector2(-8, 248)
 rotation = 1.5708
 
-[node name="WallTop" parent="." instance=ExtResource("7_4xrp5")]
+[node name="WallTop" parent="." groups=["walls"] instance=ExtResource("7_4xrp5")]
 position = Vector2(560, 8)
 
-[node name="Control3" parent="." instance=ExtResource("7_0eocp")]
+[node name="Left" type="Button" parent="."]
 layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = -72.0
+offset_right = 332.0
+offset_bottom = 56.0
+grow_vertical = 0
+rotation = -3.14639
+focus_mode = 0
+icon = ExtResource("7_pbt4b")
+flat = true
+expand_icon = true
+
+[node name="Right" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -200.0
+offset_right = -70.0
+offset_bottom = -70.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+icon = ExtResource("7_pbt4b")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="Left" to="." method="_on_left_button_press" binds= [-1]]
+[connection signal="button_up" from="Left" to="." method="_on_left_button_press" binds= [0]]
+[connection signal="button_down" from="Right" to="." method="_on_right_button_press" binds= [1]]
+[connection signal="button_up" from="Right" to="." method="_on_right_button_press"]

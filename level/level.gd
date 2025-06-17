@@ -9,6 +9,7 @@ var num_blocks = 0
 var board_pos_y = 0
 var wait_time = 0
 var cur_time_obj = null
+var walls = []
 
 @export var win_text = 'You win!'
 @export var loose_text = 'You loose!'
@@ -25,6 +26,11 @@ func _ready() -> void:
 	wait_time = $Timer.wait_time
 	
 	cur_time_obj = $Cur_time
+	
+	walls = get_tree().get_nodes_in_group('walls')
+	#for wall in walls:
+		#if wall.name in ['WallRight', 'WallLeft']:
+			#wall.size = 
 
 
 func _process(delta: float) -> void:
@@ -76,3 +82,8 @@ func _on_timer_timeout() -> void:
 func _on_button_press(action):
 	$Board.set_action(action)
 	
+func _on_left_button_press(action: int) -> void:
+	$Board.set_action(action)
+	
+func _on_right_button_press(action: int) -> void:
+	$Board.set_action(action)
