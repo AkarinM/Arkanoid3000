@@ -115,4 +115,4 @@ expand_icon = true
 [connection signal="button_down" from="Left" to="." method="_on_left_button_press" binds= [-1]]
 [connection signal="button_up" from="Left" to="." method="_on_left_button_press" binds= [0]]
 [connection signal="button_down" from="Right" to="." method="_on_right_button_press" binds= [1]]
-[connection signal="button_up" from="Right" to="." method="_on_right_button_press"]
+[connection signal="button_up" from="Right" to="." method="_on_right_button_press" binds= [0]]
