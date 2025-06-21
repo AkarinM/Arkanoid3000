@@ -10,6 +10,7 @@ var board_pos_y = 0
 var wait_time = 0
 var cur_time_obj = null
 var walls = []
+var view = Vector2.ZERO
 
 @export var win_text = 'You win!'
 @export var loose_text = 'You loose!'
@@ -24,12 +25,24 @@ func _ready() -> void:
 	
 	wait_time = $Timer.wait_time
 	
+	view = get_viewport().get_visible_rect().size
+	
 	cur_time_obj = $Cur_time
 	
+	var new_size = Vector2.ZERO
+	var width_wall = 38
+	
 	walls = get_tree().get_nodes_in_group('walls')
-	#for wall in walls:
-		#if wall.name in ['WallRight', 'WallLeft']:
-			#wall.size = 
+	for wall in walls:
+		var col_shape = wall.find_child("CollisionShape2D")
+		var shape = col_shape.shape
+		
+		if wall.name in ['WallRight', 'WallLeft']:
+			new_size = Vector2(width_wall, view.y)
+		else:
+			new_size = Vector2(view.x, width_wall)
+		
+		shape.size = new_size
 
 
 func _process(delta: float) -> void:
