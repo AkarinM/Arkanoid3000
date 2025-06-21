@@ -18,7 +18,6 @@ var walls = []
 func _ready() -> void:
 	Signals_bus.block_destroyed.connect(_on_block_destroyed)
 	Signals_bus.ball_down.connect(_on_ball_dawn)
-	Signals_bus.button_press.connect(_on_button_press)
 
 	num_blocks = get_tree().get_nodes_in_group('blocks').size()
 	board_pos_y = $Board.position.y
@@ -56,7 +55,6 @@ func _on_block_destroyed():
 
 
 func _on_ball_dawn(pos_y):
-	#if pos_y > board_pos_y:
 	loose = true
 
 
