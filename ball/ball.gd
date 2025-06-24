@@ -9,9 +9,3 @@ func _ready() -> void:
 	
 	linear_velocity = Vector2(x, 1).normalized() * speed
 	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-		

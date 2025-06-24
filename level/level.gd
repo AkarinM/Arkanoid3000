@@ -10,6 +10,7 @@ var board_pos_y = 0
 var wait_time = 0
 var cur_time_obj = null
 var walls = []
+var view = Vector2.ZERO
 
 @export var win_text = 'You win!'
 @export var loose_text = 'You loose!'
@@ -18,19 +19,30 @@ var walls = []
 func _ready() -> void:
 	Signals_bus.block_destroyed.connect(_on_block_destroyed)
 	Signals_bus.ball_down.connect(_on_ball_dawn)
-	Signals_bus.button_press.connect(_on_button_press)
 
 	num_blocks = get_tree().get_nodes_in_group('blocks').size()
 	board_pos_y = $Board.position.y
 	
 	wait_time = $Timer.wait_time
 	
+	view = get_viewport().get_visible_rect().size
+	
 	cur_time_obj = $Cur_time
 	
+	var new_size = Vector2.ZERO
+	var width_wall = 38
+	
 	walls = get_tree().get_nodes_in_group('walls')
-	#for wall in walls:
-		#if wall.name in ['WallRight', 'WallLeft']:
-			#wall.size = 
+	for wall in walls:
+		var col_shape = wall.find_child("CollisionShape2D")
+		var shape = col_shape.shape
+		
+		if wall.name in ['WallRight', 'WallLeft']:
+			new_size = Vector2(width_wall, view.y)
+		else:
+			new_size = Vector2(view.x, width_wall)
+		
+		shape.size = new_size
 
 
 func _process(delta: float) -> void:
@@ -56,7 +68,6 @@ func _on_block_destroyed():
 
 
 func _on_ball_dawn(pos_y):
-	#if pos_y > board_pos_y:
 	loose = true
 
 
