@@ -30,17 +30,6 @@ autostart = true
 
 [node name="BlockManager" parent="." instance=ExtResource("6_iq278")]
 
-[node name="Cur_time" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 69.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 50
-text = "0"
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 6
@@ -52,6 +41,7 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="WallRight" parent="Control" groups=["walls"] instance=ExtResource("7_4xrp5")]
+visible = false
 position = Vector2(0, -4)
 rotation = 1.5708
 
@@ -70,6 +60,7 @@ position = Vector2(0, 24)
 script = ExtResource("8_vn3c2")
 
 [node name="WallLeft" parent="." groups=["walls"] instance=ExtResource("7_4xrp5")]
+visible = false
 position = Vector2(-8, 248)
 rotation = 1.5708
 
@@ -110,6 +101,35 @@ icon = ExtResource("7_pbt4b")
 flat = true
 icon_alignment = 1
 expand_icon = true
+
+[node name="TopBar" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.111
+offset_bottom = -7.92801
+
+[node name="Cur_time" type="Label" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_right = -8.0
+offset_bottom = 69.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="TopBar"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_down" from="Left" to="." method="_on_left_button_press" binds= [-1]]

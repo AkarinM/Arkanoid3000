@@ -27,7 +27,7 @@ func _ready() -> void:
 	
 	view = get_viewport().get_visible_rect().size
 	
-	cur_time_obj = $Cur_time
+	cur_time_obj = $TopBar/Cur_time
 	
 	var new_size = Vector2.ZERO
 	var width_wall = 38
