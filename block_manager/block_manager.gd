@@ -27,7 +27,7 @@ func _init(view, top_bar_size_y, block_obj, level_obj) -> void:
 	
 
 func _rect_algorithm(view):
-	var script = load("res://levels/rect_level.gd").new(block_size, min_line, max_line, view, top_bar_size_y)
+	var script = load("res://levels/rect_level.gd").new(block_size, min_line, max_line, view)
 	
 	return script.generate_level()
 	
@@ -35,7 +35,8 @@ func _rect_algorithm(view):
 func _draw_level(pos_list):	
 	for vector in pos_list:
 		var block = block_obj.instantiate()
-		block.position = vector
+		block.position = vector + Vector2(0, top_bar_size_y)
+		
 		
 		level_obj.add_child(block)
 
