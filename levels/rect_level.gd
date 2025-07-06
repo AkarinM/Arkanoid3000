@@ -14,7 +14,7 @@ func _init(block_size, min_line, max_line, view) -> void:
 	self.min_line = min_line
 	self.max_line = max_line
 	self.view = view
-			
+	
 
 func generate_level():
 	var lines = _gen_rnd_count_lns(min_line, max_line)

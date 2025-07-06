@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://ckjdfoeaoruxo"]
-
-[node name="Label" type="Label"]
-offset_left = 540.5
-offset_top = 312.5
-offset_right = 611.5
-offset_bottom = 335.5
-size_flags_horizontal = 4
-metadata/_edit_use_anchors_ = true
