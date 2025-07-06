@@ -25,7 +25,7 @@ offset_right = 43.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Your loose!
+text = "You loose!
 Tap to return in menu"
 horizontal_alignment = 1
 vertical_alignment = 1

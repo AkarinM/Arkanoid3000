@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://y8xxpenklltt" path="res://board/board.tscn" id="1_ds2vg"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_jlua2"]
+[ext_resource type="PackedScene" uid="uid://dlwn34egfsfr6" path="res://block/block.tscn" id="2_w0fnu"]
 [ext_resource type="PackedScene" uid="uid://d1nawjtuyvweb" path="res://ball/ball.tscn" id="3_qte7e"]
-[ext_resource type="PackedScene" uid="uid://b58kl4jf7107x" path="res://block_manager/block_manager.tscn" id="6_iq278"]
 [ext_resource type="PackedScene" uid="uid://c8fqs5vihydmy" path="res://wall/wall.tscn" id="7_4xrp5"]
 [ext_resource type="Texture2D" uid="uid://b5w1d8ta1k022" path="res://sprites/button_icon.png" id="7_pbt4b"]
 [ext_resource type="Script" path="res://wall/wall.gd" id="8_vn3c2"]
@@ -18,6 +18,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_jlua2")
+block_obj = ExtResource("2_w0fnu")
 
 [node name="Board" parent="." instance=ExtResource("1_ds2vg")]
 position = Vector2(560, 606)
@@ -27,8 +28,6 @@ position = Vector2(558, 393)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[node name="BlockManager" parent="." instance=ExtResource("6_iq278")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -41,7 +40,6 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="WallRight" parent="Control" groups=["walls"] instance=ExtResource("7_4xrp5")]
-visible = false
 position = Vector2(0, -4)
 rotation = 1.5708
 
@@ -60,12 +58,8 @@ position = Vector2(0, 24)
 script = ExtResource("8_vn3c2")
 
 [node name="WallLeft" parent="." groups=["walls"] instance=ExtResource("7_4xrp5")]
-visible = false
 position = Vector2(-8, 248)
 rotation = 1.5708
-
-[node name="WallTop" parent="." groups=["walls"] instance=ExtResource("7_4xrp5")]
-position = Vector2(560, 8)
 
 [node name="Left" type="Button" parent="."]
 layout_mode = 1
@@ -103,6 +97,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="TopBar" type="Control" parent="."]
+z_index = 1
 layout_mode = 1
 anchor_right = 1.0
 anchor_bottom = 0.111
@@ -130,6 +125,9 @@ theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WallTop" parent="TopBar" groups=["walls"] instance=ExtResource("7_4xrp5")]
+position = Vector2(576, 69)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_down" from="Left" to="." method="_on_left_button_press" binds= [-1]]

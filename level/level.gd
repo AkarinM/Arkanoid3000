@@ -11,19 +11,22 @@ var wait_time = 0
 var cur_time_obj = null
 var walls = []
 var view = Vector2.ZERO
+var top_bar_size_y = 0
 
 @export var win_text = 'You win!'
 @export var loose_text = 'You loose!'
+@export var block_obj: PackedScene
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready() -> void:	
 	Signals_bus.block_destroyed.connect(_on_block_destroyed)
 	Signals_bus.ball_down.connect(_on_ball_dawn)
 
-	num_blocks = get_tree().get_nodes_in_group('blocks').size()
+	
 	board_pos_y = $Board.position.y
 	
 	wait_time = $Timer.wait_time
+	top_bar_size_y = $TopBar.size.y
 	
 	view = get_viewport().get_visible_rect().size
 	
@@ -34,6 +37,7 @@ func _ready() -> void:
 	
 	walls = get_tree().get_nodes_in_group('walls')
 	for wall in walls:
+		print(wall.name)
 		var col_shape = wall.find_child("CollisionShape2D")
 		var shape = col_shape.shape
 		
@@ -41,8 +45,12 @@ func _ready() -> void:
 			new_size = Vector2(width_wall, view.y)
 		else:
 			new_size = Vector2(view.x, width_wall)
-		
+		print(wall.position)
 		shape.size = new_size
+		
+	var script = load("res://block_manager/block_manager.gd").new(view, top_bar_size_y, block_obj, self)
+	
+	num_blocks = get_tree().get_nodes_in_group('blocks').size()
 
 
 func _process(delta: float) -> void:
