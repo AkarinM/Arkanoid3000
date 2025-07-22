@@ -12,6 +12,7 @@ var cur_time_obj = null
 var walls = []
 var view = Vector2.ZERO
 var top_bar_size_y = 0
+var score = 0
 
 @export var win_text = 'You win!'
 @export var loose_text = 'You loose!'
@@ -37,7 +38,6 @@ func _ready() -> void:
 	
 	walls = get_tree().get_nodes_in_group('walls')
 	for wall in walls:
-		print(wall.name)
 		var col_shape = wall.find_child("CollisionShape2D")
 		var shape = col_shape.shape
 		
@@ -45,7 +45,6 @@ func _ready() -> void:
 			new_size = Vector2(width_wall, view.y)
 		else:
 			new_size = Vector2(view.x, width_wall)
-		print(wall.position)
 		shape.size = new_size
 		
 	var script = load("res://block_manager/block_manager.gd").new(view, top_bar_size_y, block_obj, self)
@@ -54,6 +53,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	$TopBar/Score.text = str(score)
+	
 	if win:
 		win_game()
 	elif loose:
@@ -68,8 +69,9 @@ func _process(delta: float) -> void:
 			_on_button_press(-1)
 
 
-func _on_block_destroyed():
+func _on_block_destroyed(val_score):
 	num_blocks -= 1
+	score += val_score
 	
 	if num_blocks <= 0:
 		win = true
@@ -82,6 +84,7 @@ func _on_ball_dawn(pos_y):
 func win_game():
 	var scene_path = 'res://win/win.tscn'
 	Common.time = int(cur_time_obj.text)
+	Common.score = score
 	
 	Common.change_scene(scene_path)
 
